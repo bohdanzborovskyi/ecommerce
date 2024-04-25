@@ -1,0 +1,22 @@
+export const carouselData = [
+  {
+    image:'https://savagelondon.com/wp-content/uploads/2016/03/banner1.jpg',
+    path:'men/clothing/t-shirts'
+  },
+  {
+    image:'https://cpimg.tistatic.com//139234/5/template_photo_3.jpg',
+    path:'men/clothing/pants'
+  },
+  {
+    image:'https://guyskaler.com/wp-content/uploads/2023/07/desktop-banner-2-compressed.jpg',
+    path:'men/shoes/classic'
+  },
+  {
+    image:'https://boathousestores.com/cdn/shop/collections/FNL_W_JACKETS_OUTERWEAR.png?v=1704306818',
+    path:'women/clothing/jackets'
+  },
+  {
+    image:'https://milliotandco.com/cdn/shop/collections/DSCF1355_edit.jpg?v=1697428770',
+    path:'women/shoes/classic'
+  },
+]
