@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MdbCarouselModule} from "mdb-angular-ui-kit/carousel";
 import {RouterLink} from "@angular/router";
-import {carouselData} from "../../data/mainCarouselData";
+import {carouselData} from "../../data/main_carousel_data";
 import {NgForOf} from "@angular/common";
 
 @Component({
