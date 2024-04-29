@@ -1,1 +1,25 @@
-<p>nav-content works!</p>
+<div class="w-full">
+  <div class="bg-white w-full h-1/2 shadow-lg pt-5">
+    <div class="flex justify-around">
+      <div class="flex flex-col" *ngFor="let category of categories[selectedSection].sections">
+        <h1 class="text-center text-black pt-6">{{category.name}}</h1>
+        <button mat-button *ngFor="let subCategory of category.items"
+                class="text-black ">{{subCategory.name}}</button>
+      </div>
+      <div class="hidden lg:block">
+        <div class="mb-5 mt-4">
+          <img src="https://img01.ztat.net/article/spp-media-p1/271ca4d6d2d04591b8273dea03b8c340/cafd2858bef94b7cb31127d3259031a4.jpg?imwidth=400"
+               class="w-80 h-80 object-cover object-top rounded-md">
+        </div>
+        <p class="text-black">New Arrival</p>
+      </div>
+      <div class="hidden lg:block">
+        <div class="mb-5 mt-4">
+          <img src="https://img01.ztat.net/article/spp-media-p1/5e18115b2e494dada41019b3a96576d7/e54a84a5a4fa439ebdab7b06fbbbf069.jpg?imwidth=400"
+               class="w-80 h-80 object-cover object-top rounded-md">
+        </div>
+        <p class="text-black">New Arrival</p>
+      </div>
+    </div>
+  </div>
+</div>

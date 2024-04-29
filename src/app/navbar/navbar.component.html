@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light fixed-top">
+<nav class="navbar navbar-light bg-light fixed-top px-10">
   <div class="container-fluid justify-between">
     <div class="flex">
       <div>
@@ -6,22 +6,44 @@
       </div>
       <div class="flex">
         <div>
-          <button type="button" class="btn btn-link" mdbRipple rippleColor="dark"
-            (click)="openNavbarContent('men')">Men</button>
+          <button type="button" class="btn btn-link open-button" mdbRipple rippleColor="dark"
+                  (click)="openNavbarContent('men')">Men
+          </button>
         </div>
         <div>
-          <button type="button" class="btn btn-link" mdbRipple rippleColor="dark"
-                  (click)="openNavbarContent('women')">Women</button>
+          <button type="button" class="btn btn-link open-button" mdbRipple rippleColor="dark"
+                  (click)="openNavbarContent('women')">Women
+          </button>
         </div>
       </div>
     </div>
     <div class="flex items-center ">
       <button mat-icon-button (click)="navigateTo('cart')">
-      <mat-icon>shopping_cart</mat-icon >
+        <mat-icon color="accent">shopping_cart</mat-icon>
       </button>
-      <button mat-raised-button type="" color="accent">
 
+      <button *ngIf="true" mat-raised-button type="" color="accent">
+        LOGIN
       </button>
+
+      <div *ngIf="false" class="ml-3 items-center relative">
+        <div class="flex items-center">
+          <span class="font-bold text-lg text-black">Ashok</span>
+          <button mat-button [matMenuTriggerFor]="profileMenu">
+            <img class="h-10 w-10 rounded-9"
+              src="https://media.istockphoto.com/id/499728904/pl/zdj%C4%99cie/nieznana-osoba-sylwetka.jpg?s=612x612&w=0&k=20&c=pzyCbJyjNGwfeP0VaMzZkMp3svwZVjwAEpTq6pbvKN4=">
+          </button>
+          <mat-menu #profileMenu="matMenu">
+            <button mat-menu-item>Orders</button>
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item>Logout</button>
+          </mat-menu>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
+
+<div *ngIf="isNavbarContentOpen" class="modal-container" (mouseleave)="closeNavBarContent()">
+  <app-nav-content [selectedSection]="currentSection"></app-nav-content>
+</div>
