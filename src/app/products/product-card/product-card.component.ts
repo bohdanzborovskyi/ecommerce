@@ -1,4 +1,5 @@
 import {Component, Input} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-card',
@@ -10,8 +11,15 @@ import {Component, Input} from '@angular/core';
 export class ProductCardComponent {
   @Input() product!: any;
 
+  constructor(private router: Router) {
+  }
+
   calculatePercentage(firstPrice: number, secondPrice: number):number {
     return Math.round((secondPrice/firstPrice)*100);
+  }
+
+  navigate(path:string){
+    this.router.navigate([path])
   }
 
 }

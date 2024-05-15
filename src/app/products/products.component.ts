@@ -75,5 +75,4 @@ export class ProductsComponent implements OnInit {
       queryParams:additionalQueryParams,
       queryParamsHandling: "merge"});
   }
-
 }
