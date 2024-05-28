@@ -8,6 +8,7 @@ import {MatProgressBar} from "@angular/material/progress-bar";
 import {women_dress_2} from "../data/women/women_dress_2";
 import {ProductCardComponent} from "../products/product-card/product-card.component";
 import {StarRatingComponent} from "../star-rating/star-rating.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-product-details',
@@ -32,11 +33,15 @@ export class ProductDetailsComponent implements OnInit{
   reviews = [1,1,1,1,1];
   relatedProducts: any;
 
+  constructor(private router: Router) {
+  }
+
   ngOnInit() {
     this.relatedProducts = women_dress_2;
   }
 
   addToCart() {
     console.log('selected size', this.selectedSize);
+    this.router.navigate(['cart']);
   }
 }
