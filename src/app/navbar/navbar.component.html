@@ -26,7 +26,7 @@
         LOGIN
       </button>
 
-      <div *ngIf="false" class="ml-3 items-center relative">
+      <div *ngIf="true" class="ml-3 items-center relative">
         <div class="flex items-center">
           <span class="font-bold text-lg text-black">Ashok</span>
           <button mat-button [matMenuTriggerFor]="profileMenu">
@@ -34,9 +34,9 @@
               src="https://media.istockphoto.com/id/499728904/pl/zdj%C4%99cie/nieznana-osoba-sylwetka.jpg?s=612x612&w=0&k=20&c=pzyCbJyjNGwfeP0VaMzZkMp3svwZVjwAEpTq6pbvKN4=">
           </button>
           <mat-menu #profileMenu="matMenu">
-            <button mat-menu-item>Orders</button>
-            <button mat-menu-item>Profile</button>
-            <button mat-menu-item>Logout</button>
+            <button (click)="navigateTo('account/orders')" mat-menu-item>Orders</button>
+            <button (click)="navigateTo('')" mat-menu-item>Profile</button>
+            <button (click)="navigateTo('')" mat-menu-item>Logout</button>
           </mat-menu>
         </div>
       </div>

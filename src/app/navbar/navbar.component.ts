@@ -1,6 +1,6 @@
 import {Component, ElementRef, HostListener} from '@angular/core';
 import {NgIf, NgOptimizedImage} from "@angular/common";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {MdbRippleModule} from "mdb-angular-ui-kit/ripple";
 import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
@@ -30,6 +30,9 @@ export class NavbarComponent {
   currentSection: any;
   isNavbarContentOpen: boolean = false;
 
+  constructor(private router:Router) {
+  }
+
   openNavbarContent(section: string) {
     this.isNavbarContentOpen = true
     this.currentSection = section
@@ -43,6 +46,6 @@ export class NavbarComponent {
   }
 
   navigateTo(path: string) {
-
+    this.router.navigate([path]);
   }
 }

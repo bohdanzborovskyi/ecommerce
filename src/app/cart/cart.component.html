@@ -5,7 +5,7 @@
       <div class="box p-5 space-y-3 ">
         <ng-container *ngIf="cart">
           <div *ngFor="let product of cart; let last=last">
-            <app-cart-item></app-cart-item>
+            <app-cart-item [showButton]="true"></app-cart-item>
             <mat-divider *ngIf="!last"/>
           </div>
         </ng-container>

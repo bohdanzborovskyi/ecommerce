@@ -1,6 +1,6 @@
-<div class="grid grid-cols-1 gap-4 lg:grid-cols-12 px-5 lg:px-20">
+<div class="grid grid-cols-1 gap-4 lg:grid-cols-12 px-5 lg:px-20 h-50">
   <div class="col-span-1 lg:col-span-5">
-    <div class="box rounded-md shadow-md h-50 overflow-y-scroll hide-scrollbar py-2">
+    <div class="box rounded-md shadow-md h-dvh overflow-y-auto hide-scrollbar py-2">
       <div class="p-5 py-7 cursor-pointer">
         <div *ngFor="let address of addresses; let last=last" class="py-2 space-y-2">
           <app-address-card [address]="address"></app-address-card>
@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="col-span-1 lg:col-span-7">
-    <div class="rounded-md shadow-md p-3 box h-50 ">
+    <div class="rounded-md shadow-md p-3 box h-dvh ">
       <form [formGroup]="addressForm" (ngSubmit)="submit()">
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div class="col-span-1">
@@ -66,5 +66,4 @@
       </form>
     </div>
   </div>
-
 </div>
