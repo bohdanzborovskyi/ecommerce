@@ -15,11 +15,12 @@ export class UserService {
   headers:any;
 
   constructor(private http: HttpClient, private store: Store) {
-    this.headers = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("jwt"));
+
   }
 
   getUserProfile(){
-    return this.http.get(this.apiUrl + "/profile", {headers:this.headers}).pipe(
+    const headers = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("jwt"));
+    return this.http.get(this.apiUrl + "/profile", {headers:headers}).pipe(
       map((user:any) => {
         console.log("user profile", user);
 

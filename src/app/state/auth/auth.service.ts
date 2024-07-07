@@ -35,8 +35,8 @@ export class AuthService {
   register(user:any){
     return this.http.post(this.apiUrl + "/signup", user).pipe(
       map((user:any) => {
-        console.log("register user", user);
         if(user.jwt){
+          console.log("register user", user);
           localStorage.setItem("jwt", user.jwt);
         }
         return registerSuccess({user: user});

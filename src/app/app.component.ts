@@ -27,6 +27,7 @@ export class AppComponent implements OnInit{
       this.userService.getUserProfile()
     }
     this.store.pipe(select((store)=>store.auth)).subscribe((user)=>{
+      console.log("user", user);
       this.userService.getUserProfile()
     })
   }
