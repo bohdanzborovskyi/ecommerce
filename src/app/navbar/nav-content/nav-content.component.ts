@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {NgForOf} from "@angular/common";
 import {navigation} from "./navBarMenu";
 import {MatButton} from "@angular/material/button";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav-content',
@@ -18,8 +19,15 @@ export class NavContentComponent implements OnInit{
   categories:any
   @Input() selectedSection:any
 
+  constructor(private router: Router) {
+  }
+
   ngOnInit(): void {
     this.categories = navigation
+  }
+
+  navigate(path : any){
+    this.router.navigate([path]);
   }
 
 }

@@ -1,18 +1,16 @@
 <div class="p-5 shadow-lg">
   <div class="flex items-center">
     <div class="w-[5rem] h-[5rem] lg:w-[9rem] lg:h-[9rem]">
-      <img class="w-full h-full object-cover object-top"
-           src="https://rukminim1.flixcart.com/image/612/612/xif0q/jean/h/y/g/34-jeans-bt008-laheja-original-imagqqbsfgmdhcvn.jpeg?q=70"
-           alt="">
+      <img class="w-full h-full object-cover object-top" [src]="cartItem.product.imageUrl" [alt]="cartItem.product.title">
     </div>
     <div class="ml-5 space-y-1">
-      <p class="font-semibold">Men Solid Cotton Black Skinny Jeans</p>
-      <p class="text-gray-500">Size: M, Black</p>
-      <p class="text-gray-500 mt-2">Seller: KSH Trends</p>
+      <p class="font-semibold">{{ cartItem.product.title }}</p>
+      <p class="text-gray-500">Size: {{ cartItem.size}}</p>
+      <p class="text-gray-500 mt-2">Seller: {{ cartItem.product.brand }}</p>
       <div class="flex space-x-2 items-center pt-3">
-        <p class="text-gray-500 line-through">$393</p>
-        <p class="font-serif text-lg">$2999</p>
-        <p class="text-green-500 font-semibold">40%</p>
+        <p class="text-gray-500 line-through">{{ cartItem.discountedPrice}}</p>
+        <p class="font-serif text-lg">{{ cartItem.price }}</p>
+        <p class="text-green-500 font-semibold">{{ cartItem.product.discountPersent }}</p>
       </div>
     </div>
   </div>
@@ -21,11 +19,11 @@
 <div *ngIf="showButton" class="flex items-center lg:space-x-10 pt-3 pb-2 justify-between">
   <div class="flex items-center space-x-2">
     <div class="example-button-container">
-      <button mat-mini-fab color="accent" (click)="updateCartItem(-1)" [disabled]="true">
+      <button mat-mini-fab color="accent" (click)="updateCartItem(-1)" disabled="{{cartItem.quantity<1}}">
         <mat-icon>remove</mat-icon>
       </button>
     </div>
-    <span class="py-1 px-7 border border-gray-800 rounded-sm">1</span>
+    <span class="py-1 px-7 border border-gray-800 rounded-sm">{{ cartItem.quantity }}</span>
     <div class="example-button-container">
       <button mat-mini-fab color="accent" (click)="updateCartItem(1)" [disabled]="false">
         <mat-icon>add</mat-icon>

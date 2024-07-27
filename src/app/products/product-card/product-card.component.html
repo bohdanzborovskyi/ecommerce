@@ -1,4 +1,4 @@
-<div (click)="navigate('product-details/' + product.brand)" class="productCard w-[17rem] m-3 transition-all cursor-pointer">
+<div (click)="navigate()" class="productCard w-[17rem] m-3 transition-all cursor-pointer">
   <div class="h-[20rem]">
     <img class="h-full w-full"
       [src]="product.imageUrl" alt="">
@@ -12,7 +12,8 @@
     <div class="flex flex-wrap space-x-2 items-center justify-between">
       <p class="text-red-800 line-through">{{product.price}}$</p>
       <p class="font-bold">{{product.discountedPrice}}$</p>
-      <p class="text-green-500">{{calculatePercentage(product.price, product.discountedPrice)}}%</p>
+<!--      <p class="text-green-500">{{calculatePercentage(product.price, product.discountedPrice)}}%</p>-->
+      <p class="text-green-500">{{product.discountPercent}}%</p>
     </div>
 
   </div>

@@ -11,6 +11,7 @@ export const filters = [
       {value:'purple', label:'Purple'},
       {value:'yellow', label:'Yellow'},
       {value:'black', label:'Black'},
+      {value:'gray', label:'Gray'},
     ]
   },
   {

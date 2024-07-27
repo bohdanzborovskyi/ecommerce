@@ -18,7 +18,7 @@ import {
 })
 export class OrderService {
 
-  private API_BASE_URL = BASE_API_URL + "api/orders";
+  private API_BASE_URL = BASE_API_URL + "/api/orders/";
 
   constructor(
     private http: HttpClient,
@@ -53,7 +53,7 @@ export class OrderService {
   }
 
   getOrderById(orderId:string){
-    const url = this.API_BASE_URL + '/' + orderId;
+    const url = this.API_BASE_URL + orderId;
     const headers = new HttpHeaders().
     set("Authorization", "Bearer " + localStorage.getItem("jwt"));
     return this.http.get(url, {headers: headers}).pipe(

@@ -1,8 +1,8 @@
 <div class="space-y-3">
-  <p class="font-semibold">Code With Bodya</p>
-  <p>Sosnowiec</p>
+  <p class="font-semibold">{{ address.firstName }} {{address.lastName}}</p>
+  <p>{{ address.city }} {{address.zipCode}}</p>
   <div class="space-y-1">
     <p class="font-semibold">Phone Number</p>
-    <p>+48-777-777-777</p>
+    <p>{{address.mobile}}</p>
   </div>
 </div>

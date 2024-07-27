@@ -6,23 +6,21 @@
 
     <div class="col-span-2 flex items-center flex-col">
 
-      <img
-        src="https://rukminim1.flixcart.com/image/612/612/xif0q/jean/h/y/g/34-jeans-bt008-laheja-original-imagqqbsfgmdhcvn.jpeg?q=70"
-        alt="">
+      <img [src]="product.imageUrl" [alt]="product.title">
 
     </div>
 
     <div class="col-span-1 space-y-10 mt-10 lg:mt-0">
 
       <div class="space-y-2">
-        <p class="font-semibold text-gray-600 text-lg">No filter</p>
-        <p class="text-xl">Men Solid Pure Cotton Men T-Shirt</p>
+        <p class="font-semibold text-gray-600 text-lg">{{ product.brand }}</p>
+        <p class="text-xl">{{ product.title }}</p>
       </div>
 
       <div class="flex items-center space-x-5">
-        <p class="text-lg">$393</p>
-        <p class="text-lg text-gray-700 line-through">$2999</p>
-        <p class="text-green-800 text-lg font-semibold">40%</p>
+        <p class="text-lg">{{ product.discountedPrice }}</p>
+        <p class="text-lg text-gray-700 line-through">{{ product.price }}</p>
+        <p class="text-green-800 text-lg font-semibold">{{ product.discountPersent}}</p>
       </div>
 
       <div>
@@ -37,16 +35,13 @@
 
       <div>
         <button mat-raised-button style="padding: 1.5rem" class="w-full" color="accent"
-                (click)="addToCart()">Add To Cart
+                (click)="addToCart(product)">Add To Cart
         </button>
       </div>
 
       <div>
         <p class="text-gray-600">
-          Lorem
-        </p>
-        <p class="text-gray-600">
-          Lorfsdfsdvsdv;lasjklas;jas;fjsdfl;jsdfls;j
+          {{ product.description }}
         </p>
       </div>
 

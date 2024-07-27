@@ -18,8 +18,8 @@ export class ProductCardComponent {
     return Math.round((secondPrice/firstPrice)*100);
   }
 
-  navigate(path:string){
-    this.router.navigate([path])
+  navigate(){
+    this.router.navigate([`product-details/${this.product.id}`]);
   }
 
 }

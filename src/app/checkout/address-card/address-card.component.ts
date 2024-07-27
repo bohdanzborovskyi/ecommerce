@@ -8,6 +8,6 @@ import {Component, Input} from '@angular/core';
   styleUrl: './address-card.component.css'
 })
 export class AddressCardComponent {
-  @Input() address!: number;
+  @Input() address: any;
 
 }

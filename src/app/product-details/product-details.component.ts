@@ -8,7 +8,11 @@ import {MatProgressBar} from "@angular/material/progress-bar";
 import {women_dress_2} from "../data/women/women_dress_2";
 import {ProductCardComponent} from "../products/product-card/product-card.component";
 import {StarRatingComponent} from "../star-rating/star-rating.component";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ProductService} from "../state/product/product.service";
+import {select, Store} from "@ngrx/store";
+import {AppState} from "../models/appState";
+import {CartService} from "../state/cart/cart.service";
 
 @Component({
   selector: 'app-product-details',
@@ -32,16 +36,32 @@ export class ProductDetailsComponent implements OnInit{
   selectedSize: any;
   reviews = [1,1,1,1,1];
   relatedProducts: any;
+  product: any;
+  productId: any
 
-  constructor(private router: Router) {
+
+  constructor(private router: Router,
+              private productService: ProductService,
+              private activateRoute: ActivatedRoute,
+              private store: Store<AppState>,
+              private cartService: CartService) {
   }
 
   ngOnInit() {
     this.relatedProducts = women_dress_2;
+    let productId = this.activateRoute.snapshot.paramMap.get("id")
+    this.productService.findProductsById(productId)
+    this.productId = productId
+    this.store.pipe(select((store)=>store.product)).subscribe((product)=>{
+      this.product = product?.product
+      console.log("related product", product.product)
+    })
   }
 
-  addToCart() {
+  addToCart(product: any) {
     console.log('selected size', this.selectedSize);
+    this.cartService.addItemToCart({productId:this.productId, size:this.selectedSize})
+    this.cartService.getCart();
     this.router.navigate(['cart']);
   }
 }

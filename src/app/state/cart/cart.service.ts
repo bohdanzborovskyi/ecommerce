@@ -27,12 +27,12 @@ export class CartService {
   }
 
   addItemToCart(reqData:any){
-    const url = BASE_API_URL + '/cart/add';
+    const url = this.API_BASE_URL + '/cart/add';
     const headers = new HttpHeaders()
       .set("Authorization", "Bearer " + localStorage.getItem("jwt"))
       .set("Content-Type", "application/json");
 
-    return this.http.post(url, JSON.stringify(reqData), {headers}).pipe(
+    return this.http.put(url, JSON.stringify(reqData), {headers}).pipe(
       map((data:any) => {
         console.log("adding item to cart", data);
         return addItemToCartSuccess({payload:data})
@@ -50,7 +50,7 @@ export class CartService {
   }
 
   getCart(){
-    const url = BASE_API_URL + '/cart';
+    const url = this.API_BASE_URL + '/cart/';
     const headers = new HttpHeaders()
       .set("Authorization", "Bearer " + localStorage.getItem("jwt"))
       .set("Content-Type", "application/json");
@@ -73,7 +73,7 @@ export class CartService {
   }
 
   removeCartItem(carItemId:number){
-    const url = BASE_API_URL + '/cart_items/' + carItemId;
+    const url = this.API_BASE_URL + '/cart/remove/' + carItemId;
     const headers = new HttpHeaders()
       .set("Authorization", "Bearer " + localStorage.getItem("jwt"))
       .set("Content-Type", "application/json");
@@ -96,7 +96,7 @@ export class CartService {
   }
 
   updateCartItem(reqData:any){
-    const url = BASE_API_URL + '/cart_items/' + reqData.cartItemId;
+    const url = this.API_BASE_URL + '/cart/update/' + reqData.cartItemId;
     const headers = new HttpHeaders()
       .set("Authorization", "Bearer " + localStorage.getItem("jwt"))
       .set("Content-Type", "application/json");

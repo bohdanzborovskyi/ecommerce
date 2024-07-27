@@ -8,6 +8,7 @@ import {ProductsComponent} from "./products/products.component";
 import {select, Store} from "@ngrx/store";
 import {UserService} from "./state/user/user.service";
 import {AppState} from "./models/appState";
+import {CartService} from "./state/cart/cart.service";
 
 @Component({
   selector: 'app-root',
@@ -19,7 +20,9 @@ import {AppState} from "./models/appState";
 export class AppComponent implements OnInit{
   title = 'ecommerce';
 
-  constructor(private userService: UserService, private store: Store<AppState>) {
+  constructor(private userService: UserService,
+              private store: Store<AppState>,
+              private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -29,6 +32,7 @@ export class AppComponent implements OnInit{
     this.store.pipe(select((store)=>store.auth)).subscribe((user)=>{
       console.log("user", user);
       this.userService.getUserProfile()
+      this.cartService.getCart()
     })
   }
 }

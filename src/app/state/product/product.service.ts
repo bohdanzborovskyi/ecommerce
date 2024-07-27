@@ -18,7 +18,7 @@ export class ProductService {
     private route: ActivatedRoute) {
   }
 
-  API_BASE_URL = BASE_API_URL + "/products";
+  API_BASE_URL = BASE_API_URL + "/api/products/";
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem("jwt");
@@ -27,7 +27,7 @@ export class ProductService {
 
   findProductsByCategory(reqData: any) {
     const {colors, sizes, minPrice, maxPrice, minDiscount, category, stock, sort, pageNumber, pageSize} = reqData;
-    let params = new HttpParams().set("color", colors).set("category", category).set("sizes", sizes).set("minPrice", minPrice).set("maxPrice", maxPrice).set("minDiscount", minDiscount).set("stock", stock).set("sort", sort).set("pageNumber", pageNumber).set("pageSize", pageSize);
+    let params = new HttpParams().set("color", colors).set("category", category).set("size", sizes).set("minPrice", minPrice).set("maxPrice", maxPrice).set("minDiscount", minDiscount).set("stock", stock).set("sort", sort).set("pageNumber", pageNumber).set("pageSize", pageSize);
     const headers = this.getHeaders();
     return this.http.get(this.API_BASE_URL, {headers,params}).pipe(
       map((data: any) => {
@@ -45,7 +45,7 @@ export class ProductService {
 
   findProductsById(productId: any) {
     const headers = this.getHeaders();
-    return this.http.get(this.API_BASE_URL + "/id/" + productId, {headers}).pipe(
+    return this.http.get(this.API_BASE_URL + "id/" + productId, {headers}).pipe(
       map((data: any) => {
         console.log("product", data);
         return findProductsByIdSuccess({payload:data});

@@ -6,6 +6,7 @@ import {AddressCardComponent} from "../address-card/address-card.component";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
+import {OrderService} from "../../state/order/order.service";
 
 @Component({
   selector: 'app-address-form',
@@ -24,7 +25,7 @@ import {MatInput} from "@angular/material/input";
   templateUrl: './address-form.component.html',
   styleUrl: './address-form.component.css'
 })
-export class AddressFormComponent {
+export class  AddressFormComponent {
   addresses = [1,1,1,1,1,];
   addressForm: FormGroup = this.formBuilder.group({
     firstName: ['', Validators.required],
@@ -36,7 +37,8 @@ export class AddressFormComponent {
     mobile: ['', Validators.required],
   })
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder,
+              private orderService: OrderService) {
   }
 
   createOrder(address: any) {
@@ -45,6 +47,6 @@ export class AddressFormComponent {
 
   submit() {
     const formValue = this.addressForm.value
-    console.log("submit", formValue);
+    this.orderService.createOrder(formValue)
   }
 }
