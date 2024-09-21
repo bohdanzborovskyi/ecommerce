@@ -40,6 +40,7 @@ export class ProductsComponent implements OnInit {
   menPants: any
   products: any[] = []
   levelThree: any
+  totalPages: number[] = []
 
   constructor(private router: Router ,
               private activateRoute: ActivatedRoute,
@@ -78,6 +79,7 @@ export class ProductsComponent implements OnInit {
       const pageNumber = params['pageNumber'];
       const minPrice = price?.split("-")[0];
       const maxPrice = price?.split("-")[1];
+      const pageSize = params['pageSize'];
 
       var reqData = {
         category: this.levelThree,
@@ -87,7 +89,7 @@ export class ProductsComponent implements OnInit {
         maxPrice:maxPrice ? maxPrice : 100000,
         minDiscount:discount?discount:0,
         pageNumber:pageNumber? pageNumber : 0,
-        pageSize:10,
+        pageSize:pageSize? pageSize : 10,
         stock:stock? stock : null,
         sort: sort ? sort: 'price_low'
       };
@@ -96,7 +98,9 @@ export class ProductsComponent implements OnInit {
 
     this.store.pipe(select((store) => store.product)).subscribe(product => {
       this.products = product.products.content
+      this.createPages(product.productPages)
       console.log("store", this.products)
+      console.log("total pages", this.totalPages)
     })
   }
 
@@ -128,5 +132,11 @@ export class ProductsComponent implements OnInit {
     this.router.navigate([], {
       queryParams:additionalQueryParams,
       queryParamsHandling: "merge"});
+  }
+
+  createPages(totalPages: number) {
+    for(let i=0; i<totalPages; i++) {
+      this.totalPages[i] = i+1;
+    }
   }
 }

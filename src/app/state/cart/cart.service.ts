@@ -9,7 +9,7 @@ import {
   addItemToCartSuccess,
   getCartFailure,
   getCartSuccess, removeCartItemFailure,
-  removeCartItemSuccess, updateCartItemFailure, updateCartItemSuccess
+  removeCartItemSuccess, removeWholeCartFailure, removeWholeCartSuccess, updateCartItemFailure, updateCartItemSuccess
 } from "./cart.action";
 
 @Injectable({
@@ -108,6 +108,28 @@ export class CartService {
       }),
       catchError((error) => {
         return of(updateCartItemFailure(
+          error.response && error.response.data.message ?
+            error.response.data.message :
+            error.message
+        ))
+      })
+    ).subscribe( action => {
+      this.store.dispatch(action);
+    })
+  }
+
+  removeWholeCart(){
+    const url = this.API_BASE_URL + '/cart/remove';
+    const headers = new HttpHeaders()
+      .set("Authorization", "Bearer " + localStorage.getItem("jwt"))
+      .set("Content-Type", "application/json");
+
+    return this.http.delete(url, {headers:headers}).pipe(
+      map((data:any) => {
+        return removeWholeCartSuccess({payload:data});
+      }),
+      catchError((error) => {
+        return of(removeWholeCartFailure(
           error.response && error.response.data.message ?
             error.response.data.message :
             error.message

@@ -1,8 +1,7 @@
 <div class="py-10 lg:px-36">
   <div class="py-5">
-    <h2 class="text-center py-2">
-      ORDER STATUS
-    </h2>
+    <h2 class="text-center py-2">ORDER STATUS</h2>
+    <app-order-tracker [activeStep]="{title:'PLACED', id:'1'}" [steps]="steps"></app-order-tracker>
   </div>
   <div class="py-10">
     <app-address-card [address]="order.shippingAddress"></app-address-card>

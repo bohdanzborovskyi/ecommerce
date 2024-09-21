@@ -41,13 +41,11 @@ export class PaymentComponent implements OnInit{
     })
     this.store.select(store => store.order).subscribe(order => {
       this.order = order.order;
-      console.log('order' ,order);
     })
   }
 
 
   redirectToPayment() {
-    console.log("orderId", this.order);
     if(this.order.id){
       this.paymentService.createPayment(this.order.id);
     }

@@ -14,11 +14,13 @@ import {AdminProductsComponent} from "./admin/admin-products/admin-products.comp
 import {AdminOrdersComponent} from "./admin/admin-orders/admin-orders.component";
 import {AdminCustomersComponent} from "./admin/admin-customers/admin-customers.component";
 import {CreateProductComponent} from "./admin/create-product/create-product.component";
+import {AdminGuard} from "./guards/AdminGuard";
+import {UserGuard} from "./guards/UserGuard";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
 //   Admin Panel
-  {path: 'admin', component: AdminComponent, children:[
+  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard], canActivateChild:[AdminGuard],  children:[
       {path: '', component: DashboardComponent},
       {path: 'products', component: AdminProductsComponent},
       {path: 'orders', component: AdminOrdersComponent},
@@ -27,7 +29,7 @@ export const routes: Routes = [
     ]},
   {path: 'product-details/:id', component: ProductDetailsComponent},
   {path: 'products', component: ProductsComponent},
-  {path: 'cart', component: CartComponent},
+  {path: 'cart', component: CartComponent, canActivate:[UserGuard]},
   {path: 'checkout', component: CheckoutComponent},
   {path: 'checkout/payment/:id', component: PaymentComponent},
   {path: ':levelOne/:levelTwo/:levelThree', component: ProductsComponent},

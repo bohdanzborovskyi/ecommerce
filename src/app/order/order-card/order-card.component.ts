@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -9,4 +9,7 @@ import {Router} from "@angular/router";
   styleUrl: './order-card.component.css'
 })
 export class OrderCardComponent {
+
+  @Input() orderItem: any;
+  @Input() orderStatus: string = ''
 }

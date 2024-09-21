@@ -72,10 +72,9 @@ export class NavbarComponent implements OnInit {
     }
     this.store.pipe(select(store => store.user)).subscribe(user => {
       this.userProfile = user.userProfile
-      console.log("store", this.store);
       if (user.userProfile) {
         this.dialog.closeAll()
-        console.log("store", this.store);
+        console.log("userProfile", user.userProfile);
       }
     })
   }

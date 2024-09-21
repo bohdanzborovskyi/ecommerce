@@ -2,6 +2,12 @@
 
   <div class="h-full w-[20%] border border-r-gray-500">
     <p class="py-20">Navigation</p>
+    <div class="grid grid-rows-3">
+      <button (click)="navigateTo('admin/orders')">Admin Orders</button>
+      <button (click)="navigateTo('admin/products')">Admin Products</button>
+      <button (click)="navigateTo('admin/products/create')">Create Products</button>
+      <button (click)="navigateTo('admin/customers')">Create Products</button>
+    </div>
   </div>
 
   <div class="w-[80%]">

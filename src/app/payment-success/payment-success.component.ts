@@ -6,14 +6,16 @@ import {Store} from "@ngrx/store";
 import {AppState} from "../models/appState";
 import {NgForOf} from "@angular/common";
 import {AddressCardComponent} from "../checkout/address-card/address-card.component";
+import {OrderTrackerComponent} from "../order/order-tracker/order-tracker.component";
 
 @Component({
   selector: 'app-payment-success',
   standalone: true,
-  imports: [
-    NgForOf,
-    AddressCardComponent
-  ],
+    imports: [
+        NgForOf,
+        AddressCardComponent,
+        OrderTrackerComponent
+    ],
   templateUrl: './payment-success.component.html',
   styleUrl: './payment-success.component.css'
 })
@@ -23,6 +25,13 @@ export class PaymentSuccessComponent implements OnInit{
   private payerId:any
   private paymentId:any
   protected order:any
+
+  steps = [
+    {id:0, title:"PLACED", isCompleted:true},
+    {id:1, title:"CONFIRMED", isCompleted:true},
+    {id:2, title:"SHIPPED", isCompleted:false},
+    {id:3, title:"DELIVERED", isCompleted:false}
+  ];
 
   constructor(private orderService: OrderService,
               private paymentService: PaymentService,

@@ -1,21 +1,28 @@
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {BASE_API_URL} from "../../config/api";
 import {Store} from "@ngrx/store";
 import {catchError, map, of} from "rxjs";
 import {loginFailure, loginSuccess, registerFailure, registerSuccess} from "./auth.actions";
+import {AppState} from "../../models/appState";
+import {UserService} from "../user/user.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthService{
+
+  private user: any;
 
   private apiUrl = BASE_API_URL + "/auth";
+  private apiUserUrl = BASE_API_URL + "/api/users";
 
-  constructor(private http: HttpClient, private store: Store) {}
+
+  constructor(private http: HttpClient, private store: Store<AppState>, private userService: UserService) {
+  }
 
   login(loginData:any){
-    return this.http.post(this.apiUrl + "/signin", loginData).pipe(
+    return this.http.post(this.apiUrl + "/login", loginData).pipe(
       map((user:any) => {
         console.log("logged in", user);
         if(user.jwt){
@@ -50,4 +57,14 @@ export class AuthService {
     })
   }
 
+
+  isUser(){
+    const headers = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("jwt"));
+    return this.http.get<boolean>(this.apiUserUrl + "/isUser", {headers: headers})
+  }
+
+  isAdmin(){
+    const headers = new HttpHeaders().set("Authorization", "Bearer " + localStorage.getItem("jwt"));
+    return this.http.get<boolean>(this.apiUserUrl + "/isAdmin", {headers: headers})
+  }
 }

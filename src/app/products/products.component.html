@@ -4,6 +4,18 @@
       <h1 class="text-6xl font-bold text-white">Products</h1>
       <div class="flex items-center">
         <div>
+          <button mat-button [matMenuTriggerFor]="sizeMenu">
+            Page size
+          </button>
+          <mat-menu #sizeMenu="matMenu">
+            <button (click)="handleSingleSelectFilter('5', 'pageSize')" mat-menu-item>5</button>
+            <button (click)="handleSingleSelectFilter('10', 'pageSize')" mat-menu-item>10</button>
+            <button (click)="handleSingleSelectFilter('15', 'pageSize')" mat-menu-item>15</button>
+            <button (click)="handleSingleSelectFilter('20', 'pageSize')" mat-menu-item>20</button>
+            <button (click)="handleSingleSelectFilter('25', 'pageSize')" mat-menu-item>25</button>
+          </mat-menu>
+        </div>
+        <div>
           <button mat-button [matMenuTriggerFor]="sortMenu">
             Sort
           </button>
@@ -74,8 +86,12 @@
               <app-product-card [product]="product"></app-product-card>
             </ng-container>
           </div>
+          <div class="flex items-center justify-center space-x-2">
+            <div *ngFor="let i of totalPages">
+              <button class="rounded border p-2" (click)="handleSingleSelectFilter(i-1 +'', 'pageNumber')">{{i}}</button>
+            </div>
+          </div>
         </div>
-
       </div>
     </section>
   </main>

@@ -28,8 +28,7 @@ export class ProductService {
   findProductsByCategory(reqData: any) {
     const {colors, sizes, minPrice, maxPrice, minDiscount, category, stock, sort, pageNumber, pageSize} = reqData;
     let params = new HttpParams().set("color", colors).set("category", category).set("size", sizes).set("minPrice", minPrice).set("maxPrice", maxPrice).set("minDiscount", minDiscount).set("stock", stock).set("sort", sort).set("pageNumber", pageNumber).set("pageSize", pageSize);
-    const headers = this.getHeaders();
-    return this.http.get(this.API_BASE_URL, {headers,params}).pipe(
+    return this.http.get(this.API_BASE_URL, {params}).pipe(
       map((data: any) => {
         console.log("products", data);
         return findProductsByCategorySuccess({payload:data});

@@ -12,3 +12,6 @@ export const removeCartItemFailure = createAction("[Cart] Remove Item From Cart 
 export const updateCartItemRequest = createAction("[Cart] Update Item From Cart Request", props<{reqData:any}>());
 export const updateCartItemSuccess = createAction("[Cart] Update Item From Cart Success", props<{payload:any}>());
 export const updateCartItemFailure = createAction("[Cart] Update Item From Cart Failure", props<{error:any}>());
+export const removeWholeCartRequest = createAction("[Cart] Remove Whole Cart Request", props<{reqData:any}>());
+export const removeWholeCartSuccess = createAction("[Cart] Remove Whole Cart Success", props<{payload:any}>());
+export const removeWholeCartFailure = createAction("[Cart] Remove Whole Cart Failure", props<{error:any}>());

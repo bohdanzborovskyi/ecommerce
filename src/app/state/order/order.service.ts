@@ -72,7 +72,7 @@ export class OrderService {
   }
 
   getOrderHistory(){
-    const url = this.API_BASE_URL + '/user';
+    const url = this.API_BASE_URL + 'user';
     const headers = new HttpHeaders().
     set("Authorization", "Bearer " + localStorage.getItem("jwt"));
 

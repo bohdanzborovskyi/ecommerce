@@ -1,4 +1,4 @@
-import {createReducer, on} from "@ngrx/store";
+import {createAction, createReducer, on} from "@ngrx/store";
 import {
   addItemToCartFailure,
   addItemToCartRequest,
@@ -8,9 +8,10 @@ import {
   getCartSuccess,
   removeCartItemFailure,
   removeCartItemRequest,
-  removeCartItemSuccess, updateCartItemFailure,
+  removeCartItemSuccess, removeWholeCartFailure, removeWholeCartSuccess, updateCartItemFailure,
   updateCartItemRequest, updateCartItemSuccess
 } from "./cart.action";
+import {state} from "@angular/animations";
 
 export interface CartState {
   cartItems: any[],
@@ -28,10 +29,11 @@ const initialState : CartState = {
 
 export const cartReducer = createReducer(
   initialState,
-  on(addItemToCartRequest, getCartRequest, removeCartItemRequest, updateCartItemRequest,(state) => ({...state, loading: true, error: null})),
+  on(addItemToCartRequest, getCartRequest, removeCartItemRequest, updateCartItemRequest, removeCartItemRequest,(state) => ({...state, loading: true, error: null})),
   on(addItemToCartSuccess,(state, action) => ({...state, loading: false, error: null, cartItems: [...state.cartItems, action.payload]})),
-  on(addItemToCartFailure, getCartFailure, removeCartItemFailure, updateCartItemFailure, (state, action) => ({...state, loading: true, error: action.error})),
+  on(addItemToCartFailure, getCartFailure, removeCartItemFailure, updateCartItemFailure, removeWholeCartFailure, (state, action) => ({...state, loading: true, error: action.error})),
   on(getCartSuccess,(state, action) => ({...state, loading: false, error: null, cartItems: action.payload.cartItems, cart:action.payload})),
   on(removeCartItemSuccess,(state, action) => ({...state, loading: false, error: null, cartItems: state.cartItems.filter(item => item.id !== action.cartItemId)})),
   on(updateCartItemSuccess,(state, action) => ({...state, loading: false, error: null, cartItems: state.cartItems.map(item => item.id === action.payload.id ? action.payload : item)})),
+  on(removeWholeCartSuccess, (state) => ({...state, loading: false, error:null, cartItems: []}))
 )

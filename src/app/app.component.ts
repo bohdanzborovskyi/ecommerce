@@ -9,6 +9,7 @@ import {select, Store} from "@ngrx/store";
 import {UserService} from "./state/user/user.service";
 import {AppState} from "./models/appState";
 import {CartService} from "./state/cart/cart.service";
+import {async} from "rxjs";
 
 @Component({
   selector: 'app-root',

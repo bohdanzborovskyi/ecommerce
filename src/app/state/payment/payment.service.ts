@@ -11,6 +11,7 @@ import {
   createPaymentSuccess
 } from "./payment.action";
 import {OrderService} from "../order/order.service";
+import {CartService} from "../cart/cart.service";
 
 
 @Injectable({
@@ -25,7 +26,8 @@ export class PaymentService {
     private store: Store,
     private router: Router,
     private route: ActivatedRoute,
-    private orderService: OrderService) {
+    private orderService: OrderService,
+    private cartService: CartService) {
   }
 
   createPayment(orderId:any){
@@ -62,6 +64,7 @@ export class PaymentService {
     return this.http.post(url,{payerId:payerId, paymentId:paymentId}, {headers:headers}).pipe(
       map((data:any) => {
         this.orderService.getOrderById(orderId);
+        this.cartService.removeWholeCart();
         return competePaymentSuccess({order:data});
       }),
       catchError((error) => {
