@@ -2,9 +2,13 @@ import {createReducer, on} from "@ngrx/store";
 import {
   createOrderFailure,
   createOrderRequest,
-  createOrderSuccess, getOrderByIdFailure,
+  createOrderSuccess,
+  getOrderByIdFailure,
   getOrderByIdRequest,
-  getOrderByIdSuccess, getOrderHistoryFailure, getOrderHistoryRequest, getOrderHistorySuccess
+  getOrderByIdSuccess,
+  getOrderHistoryFailure,
+  getOrderHistoryRequest,
+  getOrderHistorySuccess
 } from "./order.action";
 
 export interface OrderState {

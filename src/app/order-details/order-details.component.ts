@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AddressCardComponent} from "../checkout/address-card/address-card.component";
 import {NgForOf} from "@angular/common";
 import {OrderCardComponent} from "../order/order-card/order-card.component";

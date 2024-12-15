@@ -1,17 +1,15 @@
-<div class="flex items-center h-screen">
-
-  <div class="h-full w-[20%] border border-r-gray-500">
-    <p class="py-20">Navigation</p>
-    <div class="grid grid-rows-3">
-      <button (click)="navigateTo('admin/orders')">Admin Orders</button>
-      <button (click)="navigateTo('admin/products')">Admin Products</button>
-      <button (click)="navigateTo('admin/products/create')">Create Products</button>
-      <button (click)="navigateTo('admin/customers')">Create Products</button>
+<div class="flex items-center h-screen overflow-y-scroll">
+  <div class="h-full w-[10%] border border-r-gray-500">
+    <p class="py-3 text-center text-3xl">Navigation</p>
+    <mat-divider></mat-divider>
+    <div class="grid grid-rows-4">
+      <button class="text-lg py-3 font-serif" (click)="navigateTo('admin/orders')">Admin Orders</button>
+      <button class="text-lg font-serif" (click)="navigateTo('admin/products')">Admin Products</button>
+      <button class="text-lg font-serif" (click)="navigateTo('admin/customers')">Customers</button>
+      <button class="text-lg font-serif" (click)="navigateTo('admin/products/create')">Create Products</button>
     </div>
   </div>
-
-  <div class="w-[80%]">
+  <div class="h-full w-[90%]">
     <router-outlet></router-outlet>
   </div>
-
 </div>

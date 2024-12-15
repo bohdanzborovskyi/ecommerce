@@ -1,1 +1,40 @@
-<p>admin-products works!</p>
+<div class="w-[100%]">
+  <p class="flex justify-center text-2xl ">PRODUCTS</p>
+  <div>
+    <table class="w-full text-lg-center">
+      <thead>
+      <tr>
+        <th >Image</th>
+        <th >Title</th>
+        <th >Category</th>
+        <th >Price</th>
+        <th >Quantity</th>
+        <th >Action</th>
+        <th >Action</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let product of products.content">
+      <tr class="border-b text-center">
+        <td class="px-3 py-2" align="center">
+          <img class="h-12 w-12 rounded-9" src="{{product.imageUrl}}" alt="Product image"/>
+        </td>
+        <td class="px-3">{{ product.title }}</td>
+        <td class="px-3">{{ product.category?.name }}</td>
+        <td class="px-3">{{ product.price }}$</td>
+        <td class="px-3">{{ product.quantity }}</td>
+        <td class="px-3">
+          <button class="bg-green-700 rounded-md text-lg  px-2" (click)="deleteProduct(product.id)">Delete</button>
+        </td>
+        <td>
+          <button class="bg-green-700 rounded-md text-lg  px-2" (click)="editProduct(product.id)">Edit</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="flex items-center justify-center space-x-2 py-2">
+      <div *ngFor="let i of totalPages">
+        <button class="rounded border p-2" (click)="retrieveProducts(i-1)">{{i}}</button>
+      </div>
+    </div>
+  </div>
+</div>

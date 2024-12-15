@@ -4,10 +4,9 @@ import {CartItemComponent} from "../cart/cart-item/cart-item.component";
 import {MatDivider} from "@angular/material/divider";
 import {NgForOf, NgIf} from "@angular/common";
 import {MatButton} from "@angular/material/button";
-import {ActivatedRoute, Router} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Store} from "@ngrx/store";
 import {AppState} from "../models/appState";
-import {extractAllParams} from "@angular/compiler-cli/src/ngtsc/docs/src/function_extractor";
 import {OrderService} from "../state/order/order.service";
 import {PaymentService} from "../state/payment/payment.service";
 

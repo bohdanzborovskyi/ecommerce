@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {AddressFormComponent} from "./address-form/address-form.component";
 
 @Component({

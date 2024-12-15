@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { OrderTrackerComponent } from './order-tracker.component';
+import {OrderTrackerComponent} from './order-tracker.component';
 
 describe('OrderTrackerComponent', () => {
   let component: OrderTrackerComponent;
@@ -11,7 +11,7 @@ describe('OrderTrackerComponent', () => {
       imports: [OrderTrackerComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(OrderTrackerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

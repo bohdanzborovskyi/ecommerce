@@ -19,6 +19,7 @@ export class ProductService {
   }
 
   API_BASE_URL = BASE_API_URL + "/api/products/";
+  API_BASE_ADMIN_URL = BASE_API_URL + "/api/admin/products/";
 
   private getHeaders(): HttpHeaders {
     const token = localStorage.getItem("jwt");
@@ -56,5 +57,27 @@ export class ProductService {
     ).subscribe(action => {
       this.store.dispatch(action);
     });
+  }
+
+  createProduct(product: any) {
+    let headers = this.getHeaders();
+    return this.http.post(this.API_BASE_ADMIN_URL + "create", product, {headers: headers}).pipe(
+      map((data: any) => {
+        console.log("product", data);
+      }),
+      catchError(error => {return of(error)})
+    ).subscribe(data =>
+        console.log("created product", data))
+  }
+
+  editProduct(product: any, productId: any) {
+    let headers = this.getHeaders();
+    return this.http.put(this.API_BASE_ADMIN_URL + productId + "/edit", product, {headers: headers}).pipe(
+      map((data: any) => {
+        console.log("edit product", data);
+      }),
+      catchError(error => {return of(error)})
+    ).subscribe(data =>
+      console.log("edited product", data))
   }
 }

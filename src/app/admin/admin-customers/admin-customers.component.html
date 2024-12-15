@@ -1,1 +1,34 @@
-<p>admin-customers works!</p>
+<div class="w-[100%]">
+  <p class="flex justify-center text-2xl ">CUSTOMERS</p>
+  <div>
+    <table class="w-full text-lg-center">
+      <thead>
+      <tr>
+        <th >ID</th>
+        <th >Image</th>
+        <th >First Name</th>
+        <th >Last Name</th>
+        <th >E-mail</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let customer of customers.content">
+      <tr class="border-b text-center">
+        <td class="px-3">{{ customer.id }}</td>
+        <td class="px-3 py-2" align="center">
+          <img class="h-12 w-12 rounded-9" src="https://ui-avatars.com/api/?background=random&name={{customer.firstName}}+{{customer.lastName}}&length=2&bold=true" alt="Product image"/>
+        </td>
+        <td class="px-3">{{ customer.firstName }}</td>
+        <td class="px-3">{{ customer.lastName }}</td>
+        <td class="px-3">{{ customer.email }}</td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="flex items-center justify-center space-x-2 py-2">
+      <div *ngFor="let i of totalPages">
+        <button class="rounded border p-2" (click)="retrieveCustomers(i-1)">{{i}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

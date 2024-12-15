@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { PaymentSuccessComponent } from './payment-success.component';
+import {PaymentSuccessComponent} from './payment-success.component';
 
 describe('PaymentSuccessComponent', () => {
   let component: PaymentSuccessComponent;
@@ -11,7 +11,7 @@ describe('PaymentSuccessComponent', () => {
       imports: [PaymentSuccessComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(PaymentSuccessComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

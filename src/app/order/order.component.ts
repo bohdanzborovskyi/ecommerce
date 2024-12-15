@@ -4,7 +4,7 @@ import {MatCheckbox} from "@angular/material/checkbox";
 import {OrderCardComponent} from "./order-card/order-card.component";
 import {Router} from "@angular/router";
 import {OrderService} from "../state/order/order.service";
-import {State, Store} from "@ngrx/store";
+import {Store} from "@ngrx/store";
 import {AppState} from "../models/appState";
 
 @Component({

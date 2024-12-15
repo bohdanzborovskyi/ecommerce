@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 import {HomeComponent} from "./home/home.component";
 import {ProductsComponent} from "./products/products.component";
 import {CartComponent} from "./cart/cart.component";
@@ -16,16 +16,17 @@ import {AdminCustomersComponent} from "./admin/admin-customers/admin-customers.c
 import {CreateProductComponent} from "./admin/create-product/create-product.component";
 import {AdminGuard} from "./guards/AdminGuard";
 import {UserGuard} from "./guards/UserGuard";
+import {EditProductComponent} from "./admin/edit-product/edit-product.component";
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
-//   Admin Panel
   {path: 'admin', component: AdminComponent, canActivate: [AdminGuard], canActivateChild:[AdminGuard],  children:[
       {path: '', component: DashboardComponent},
       {path: 'products', component: AdminProductsComponent},
       {path: 'orders', component: AdminOrdersComponent},
       {path: 'customers', component: AdminCustomersComponent},
-      {path: 'products/create', component: CreateProductComponent}
+      {path: 'products/create', component: CreateProductComponent},
+      {path: 'products/edit/:id', component: EditProductComponent}
     ]},
   {path: 'product-details/:id', component: ProductDetailsComponent},
   {path: 'products', component: ProductsComponent},

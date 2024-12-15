@@ -8,8 +8,9 @@ import {
   createOrderFailure,
   createOrderSuccess,
   getOrderByIdFailure,
-  getOrderByIdSuccess, getOrderHistoryFailure,
-  getOrderHistoryRequest, getOrderHistorySuccess
+  getOrderByIdSuccess,
+  getOrderHistoryFailure,
+  getOrderHistorySuccess
 } from "./order.action";
 
 
@@ -19,6 +20,7 @@ import {
 export class OrderService {
 
   private API_BASE_URL = BASE_API_URL + "/api/orders/";
+  private API_BASE_ADMIN_URL = BASE_API_URL + "/api/admin/orders/";
 
   constructor(
     private http: HttpClient,
@@ -88,6 +90,62 @@ export class OrderService {
       })
     ).subscribe(action => {
       this.store.dispatch(action);
+    })
+  }
+
+  deliverOrder(orderId: number){
+    const headers = new HttpHeaders()
+      .set("Authorization", "Bearer " + localStorage.getItem("jwt"))
+      .set("Content-Type", "application/json");
+    this.http.get(this.API_BASE_ADMIN_URL + orderId + "/deliver", {headers:headers}).pipe(
+      catchError((err:any) => {
+        console.log("deliver order error", err);
+        return of(err.message)
+      })
+    ).subscribe(data => {
+      console.log("deliver order", data);
+    })
+  }
+
+  shipOrder(orderId: number){
+    const headers = new HttpHeaders()
+      .set("Authorization", "Bearer " + localStorage.getItem("jwt"))
+      .set("Content-Type", "application/json");
+    this.http.get(this.API_BASE_ADMIN_URL + orderId + "/ship", {headers:headers}).pipe(
+      catchError((err:any) => {
+        console.log("ship order error", err);
+        return of(err.message)
+      })
+    ).subscribe(data => {
+      console.log("ship order", data);
+    })
+  }
+
+  confirmOrder(orderId: number){
+    const headers = new HttpHeaders()
+      .set("Authorization", "Bearer " + localStorage.getItem("jwt"))
+      .set("Content-Type", "application/json");
+    this.http.get(this.API_BASE_ADMIN_URL + orderId + "/confirm", {headers:headers}).pipe(
+      catchError((err:any) => {
+        console.log("confirm order error", err);
+        return of(err.message)
+      })
+    ).subscribe(data => {
+      console.log("confirm order", data);
+    })
+  }
+
+  cancelOrder(orderId: number){
+    const headers = new HttpHeaders()
+      .set("Authorization", "Bearer " + localStorage.getItem("jwt"))
+      .set("Content-Type", "application/json");
+    this.http.get(this.API_BASE_ADMIN_URL + orderId + "/cancel", {headers:headers}).pipe(
+      catchError((err:any) => {
+        console.log("cancel order error", err);
+        return of(err.message)
+      })
+    ).subscribe(data => {
+      console.log("cancel order", data);
     })
   }
 }

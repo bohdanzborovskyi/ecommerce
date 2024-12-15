@@ -99,8 +99,6 @@ export class ProductsComponent implements OnInit {
     this.store.pipe(select((store) => store.product)).subscribe(product => {
       this.products = product.products.content
       this.createPages(product.productPages)
-      console.log("store", this.products)
-      console.log("total pages", this.totalPages)
     })
   }
 

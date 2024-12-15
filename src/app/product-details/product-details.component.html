@@ -26,10 +26,7 @@
       <div>
         <p class="text-lg font-semibold">Size</p>
         <mat-radio-group class="space-x-5" [(ngModel)]="selectedSize">
-          <mat-radio-button value="S"><span>S</span></mat-radio-button>
-          <mat-radio-button value="M"><span>M</span></mat-radio-button>
-          <mat-radio-button value="L"><span>L</span></mat-radio-button>
-          <mat-radio-button value="XL"><span>XL</span></mat-radio-button>
+          <mat-radio-button *ngFor="let size of product.sizes" value="{{size.name}}">{{size.name}}</mat-radio-button>
         </mat-radio-group>
       </div>
 

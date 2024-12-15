@@ -2,7 +2,8 @@ import {createReducer, on} from "@ngrx/store";
 import {
   findProductsByCategoryFailure,
   findProductsByCategorySuccess,
-  findProductsByIdFailure, findProductsByIdSuccess
+  findProductsByIdFailure,
+  findProductsByIdSuccess
 } from "./product.action";
 
 const initialState = {

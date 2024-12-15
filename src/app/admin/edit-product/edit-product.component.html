@@ -2,37 +2,37 @@
 <div class="grid grid-cols-1 gap-4 lg:grid-cols-12 px-5 lg:px-20">
   <div class="col-span-1 lg:col-span-12">
     <div class="rounded-md p-3  h-dvh ">
-      <form [formGroup]="productForm" >
+      <form [formGroup]="productForm" (ngSubmit)="editProduct()">
         <div class="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <div class="col-span-1">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Image URL</mat-label>
-              <input matInput formControlName="imageUrl" placeholder="Image URL" autocomplete="given-name" type="text">
+              <input matInput [(ngModel)]="product.imageUrl" formControlName="imageUrl" placeholder="Image URL" autocomplete="given-name" type="text">
             </mat-form-field>
           </div>
           <div class="col-span-1">
             <mat-form-field appearance="fill" class="w-full">
-              <mat-label>Brand</mat-label>
-              <input matInput formControlName="brand" placeholder="Brand" autocomplete="given-name" type="text">
+              <mat-label>Brand </mat-label>
+              <input matInput [(ngModel)]="product.brand" formControlName="brand" placeholder="Brand" autocomplete="given-name" type="text">
             </mat-form-field>
           </div>
           <div class="col-span-1">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Title</mat-label>
-              <textarea matInput formControlName="title" placeholder="Title"
+              <textarea matInput [(ngModel)]="product.title" formControlName="title" placeholder="Title"
                         autocomplete="given-name" type="text" rows="1"></textarea>
             </mat-form-field>
           </div>
           <div class="col-span-1">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Color</mat-label>
-              <input matInput formControlName="color" placeholder="Color" autocomplete="given-name" type="text">
+              <input matInput [(ngModel)]="product.color" formControlName="color" placeholder="Color" autocomplete="given-name" type="text">
             </mat-form-field>
           </div>
           <div class="col-span-1">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Top Level Category</mat-label>
-              <select matNativeControl formControlName="topLevelCategory" placeholder="Top Level Category">
+              <select matNativeControl [(ngModel)]="product.category.parentCategory.parentCategory.name" formControlName="topLevelCategory" placeholder="Top Level Category">
                 <option value="Men">Men</option>
                 <option value="Women">Women</option>
               </select>
@@ -41,7 +41,7 @@
           <div class="col-span-1">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Second Level Category</mat-label>
-              <select matNativeControl formControlName="secondLevelCategory" placeholder="Second Level Category">
+              <select matNativeControl [(ngModel)]="product.category.parentCategory.name" formControlName="secondLevelCategory" placeholder="Second Level Category">
                 <option value="Clothing">Clothing</option>
                 <option value="Shoes">Shoes</option>
                 <option value="Accessories">Accessories</option>
@@ -51,7 +51,7 @@
           <div class="col-span-1">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Third Level Category</mat-label>
-              <select matNativeControl formControlName="thirdLevelCategory" placeholder="Third Level Category">
+              <select matNativeControl [(ngModel)]="product.category.name" formControlName="thirdLevelCategory" placeholder="Third Level Category">
                 <option value="Shirt">Shirt</option>
                 <option value="Jeans">Jeans</option>
                 <option value="Sweaters">Sweaters</option>
@@ -73,25 +73,25 @@
           <div class="col-span-1">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Description</mat-label>
-              <input matInput formControlName="description" placeholder="Description" autocomplete="given-name" type="text">
+              <input matInput [(ngModel)]="product.description" formControlName="description" placeholder="Description" autocomplete="given-name" type="text">
             </mat-form-field>
           </div>
           <div class="col-span-1">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Price</mat-label>
-              <input matInput formControlName="price" placeholder="Price" autocomplete="given-name" type="text">
+              <input matInput [(ngModel)]="product.price" formControlName="price" placeholder="Price" autocomplete="given-name" type="text">
             </mat-form-field>
           </div>
           <div class="col-span-1">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Discounted Price</mat-label>
-              <input matInput formControlName="discountedPrice" placeholder="Discounted Price" autocomplete="given-name" type="text">
+              <input matInput [(ngModel)]="product.discountedPrice" formControlName="discountedPrice" placeholder="Discounted Price" autocomplete="given-name" type="text">
             </mat-form-field>
           </div>
           <div class="col-span-1">
             <mat-form-field appearance="fill" class="w-full">
               <mat-label>Discounted Percentage</mat-label>
-              <input matInput formControlName="discountedPercentage" placeholder="Discounted Percentage" autocomplete="given-name" type="text">
+              <input matInput [(ngModel)]="product.discountPercent" formControlName="discountPercent" placeholder="Discounted Percentage" autocomplete="given-name" type="text">
             </mat-form-field>
           </div>
           <div class="col-span-2 justify-items-center">
@@ -99,40 +99,41 @@
             <ng-container formArrayName="sizes">
               <ng-container *ngFor="let sizeForm of sizes.controls; let i=index">
                 <div [formGroup]="sizeForm">
-                    <mat-form-field appearance="fill" class="pr-3">
+                  <mat-form-field appearance="fill" class="pr-3">
 
-                      <div *ngIf="productForm.controls['secondLevelCategory'].value=='Shoes'; else clothing">
-                        <div>
-                        <select matNativeControl required formControlName="name">
+                    <div *ngIf="product.category.parentCategory.name=='Shoes'; else clothing">
+                      <div>
+                        <select matNativeControl required formControlName="name" >
                           <option *ngFor="let shoesSize of shoesSizes" value='{{shoesSize}}' >{{shoesSize}}</option>
                         </select>
-                        </div>
                       </div>
-                      <ng-template #clothing>
-                        <div>
-                          <select matNativeControl required formControlName="name">
-                            <option *ngFor="let clothingSize of clothingSizes" value='{{clothingSize}}' >{{clothingSize}}</option>
-                          </select>
-                        </div>
-                      </ng-template>
-                    </mat-form-field>
-                    <mat-form-field appearance="fill">
-                      <input matInput formControlName="quantity" placeholder="Quantity">
-                    </mat-form-field>
+                    </div>
+                    <ng-template #clothing>
+                      <div>
+                        <select matNativeControl  required formControlName="name" >
+                          <option *ngFor="let clothingSize of clothingSizes" value='{{clothingSize}}' >{{clothingSize}}</option>
+                        </select>
+                      </div>
+                    </ng-template>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <input matInput  formControlName="quantity" placeholder="Quantity">
+                  </mat-form-field>
                   <mat-icon (click)="deleteSize(i)">delete_forever</mat-icon>
                 </div>
               </ng-container>
-            <button mat-mini-fab (click)="addSize()">
+              <button mat-mini-fab (click)="addSize()">
                 <mat-icon>add</mat-icon>
-            </button>
+              </button>
             </ng-container>
           </div>
           <div class="col-span-2">
-            <button mat-raised-button class="w-full" style="padding: 1.6rem" color="accent" type="submit" (click)="createProduct()">Create product</button>
+            <button mat-raised-button class="w-full" style="padding: 1.6rem" color="accent" type="submit">Edit product</button>
           </div>
         </div>
       </form>
     </div>
   </div>
 </div>
+
 

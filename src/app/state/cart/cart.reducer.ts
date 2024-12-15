@@ -1,4 +1,4 @@
-import {createAction, createReducer, on} from "@ngrx/store";
+import {createReducer, on} from "@ngrx/store";
 import {
   addItemToCartFailure,
   addItemToCartRequest,
@@ -8,10 +8,13 @@ import {
   getCartSuccess,
   removeCartItemFailure,
   removeCartItemRequest,
-  removeCartItemSuccess, removeWholeCartFailure, removeWholeCartSuccess, updateCartItemFailure,
-  updateCartItemRequest, updateCartItemSuccess
+  removeCartItemSuccess,
+  removeWholeCartFailure,
+  removeWholeCartSuccess,
+  updateCartItemFailure,
+  updateCartItemRequest,
+  updateCartItemSuccess
 } from "./cart.action";
-import {state} from "@angular/animations";
 
 export interface CartState {
   cartItems: any[],

@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { NavContentComponent } from './nav-content.component';
+import {NavContentComponent} from './nav-content.component';
 
 describe('NavContentComponent', () => {
   let component: NavContentComponent;
@@ -11,7 +11,7 @@ describe('NavContentComponent', () => {
       imports: [NavContentComponent]
     })
     .compileComponents();
-    
+
     fixture = TestBed.createComponent(NavContentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

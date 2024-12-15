@@ -1,15 +1,20 @@
 import {Injectable} from "@angular/core";
 import {BASE_API_URL} from "../../config/api";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {createAction, Store} from "@ngrx/store";
+import {Store} from "@ngrx/store";
 import {ActivatedRoute, Router} from "@angular/router";
 import {catchError, map, of} from "rxjs";
 import {
   addItemToCartFailure,
   addItemToCartSuccess,
   getCartFailure,
-  getCartSuccess, removeCartItemFailure,
-  removeCartItemSuccess, removeWholeCartFailure, removeWholeCartSuccess, updateCartItemFailure, updateCartItemSuccess
+  getCartSuccess,
+  removeCartItemFailure,
+  removeCartItemSuccess,
+  removeWholeCartFailure,
+  removeWholeCartSuccess,
+  updateCartItemFailure,
+  updateCartItemSuccess
 } from "./cart.action";
 
 @Injectable({

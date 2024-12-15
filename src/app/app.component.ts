@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, RouterOutlet} from '@angular/router';
+import {RouterOutlet} from '@angular/router';
 import {MdbCarouselModule} from "mdb-angular-ui-kit/carousel";
 import {HomeComponent} from "./home/home.component";
 import {NavbarComponent} from "./navbar/navbar.component";
@@ -9,7 +9,6 @@ import {select, Store} from "@ngrx/store";
 import {UserService} from "./state/user/user.service";
 import {AppState} from "./models/appState";
 import {CartService} from "./state/cart/cart.service";
-import {async} from "rxjs";
 
 @Component({
   selector: 'app-root',
